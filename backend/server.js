@@ -5,6 +5,7 @@ import userRouter from "./Routes/userRoutes.js";
 import orderRouter from "./Routes/orderRoutes.js";
 import uploadRoutes from "./Routes/uploadRoutes.js";
 import dotenv from "dotenv";
+import cors from "cors";
 
 import morgan from "morgan";
 import { notfound, errorHandler } from "./Middleware/errorMiddleware.js";
@@ -14,9 +15,18 @@ dotenv.config();
 connect();
 const app = express();
 
+
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+
+const corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 

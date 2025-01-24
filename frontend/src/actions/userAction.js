@@ -1,4 +1,4 @@
-import request from "../../api.js";
+import request from "../api.js";
 import {
   USER_LOGIN_SUCCESS,
   USER_LOGIN_REQUEST,

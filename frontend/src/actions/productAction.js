@@ -1,5 +1,5 @@
 
-import request from "../../api.js";
+import request from "../api.js";
 import {
   PRODUCT_LIST_SUCCESS,
   PRODUCT_LIST_REQUEST,

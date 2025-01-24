@@ -1,4 +1,4 @@
-import request from "../../api";
+import request from "../api";
 import {
   ORDER_CREATE_FAIL,
   ORDER_CREATE_REQUEST,

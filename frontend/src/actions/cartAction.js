@@ -5,7 +5,7 @@ import {
   CART_SAVE_PAYMENT_METHOD,
   CART_SAVE_SAHIPPING_ADDRESS,
 } from "../constants/cartConstants.js";
-import request  from "../../api.js";
+import request  from "../api.js";
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
   const { data } = await request.get(`/api/products/${id}`);
