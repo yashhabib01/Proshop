@@ -1,3 +1,4 @@
+import request from "../../api";
 import {
   ORDER_CREATE_FAIL,
   ORDER_CREATE_REQUEST,
@@ -36,7 +37,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
       },
     };
 
-    axios
+    request
       .post(`/api/orders`, order, config)
       .then((res) => {
         dispatch({
@@ -79,7 +80,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
       },
     };
 
-    axios
+    request
       .get(`/api/orders/${id}`, config)
       .then((res) => {
         dispatch({
@@ -127,7 +128,7 @@ export const payOrder = (orderId, paymentResult) => async (
       },
     };
 
-    axios
+    request
       .put(`/api/orders/${orderId}/pay`, paymentResult, config)
       .then((res) => {
         dispatch({
@@ -171,7 +172,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
       },
     };
 
-    axios
+    request
       .get(`/api/orders/myorders/`, config)
       .then((res) => {
         dispatch({
@@ -215,7 +216,7 @@ export const listOrders = () => async (dispatch, getState) => {
       },
     };
 
-    axios
+    request
       .get(`/api/orders`, config)
       .then((res) => {
         dispatch({
@@ -260,7 +261,7 @@ export const deliverdOrder = (order) => async (dispatch, getState) => {
       },
     };
 
-    axios
+    request
       .put(`/api/orders/${order._id}/deliver`, {}, config)
       .then((res) => {
         console.log(res);

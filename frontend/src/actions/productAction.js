@@ -1,4 +1,5 @@
-import axios from "axios";
+
+import request from "../../api.js";
 import {
   PRODUCT_LIST_SUCCESS,
   PRODUCT_LIST_REQUEST,
@@ -28,7 +29,7 @@ export const listProducts = (keyword = "", pageNumber = "") => async (
 ) => {
   dispatch({ type: PRODUCT_LIST_REQUEST });
   try {
-    const { data } = await axios.get(
+    const { data } = await request.get(
       `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
     );
 
@@ -48,7 +49,7 @@ export const listProductDetails = (id) => async (dispatch) => {
   dispatch({ type: PRODUCT_DETAILS_REQUEST });
   console.log(id);
   try {
-    const { data } = await axios.get(`/api/products/${id}`);
+    const { data } = await request.get(`/api/products/${id}`);
 
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
   } catch (error) {
@@ -77,7 +78,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios
+    await request
       .delete(`/api/products/${id}`, config)
       .then((res) => {
         dispatch({
@@ -119,7 +120,7 @@ export const createProduct = () => async (dispatch, getState) => {
       },
     };
 
-    await axios
+    await request
       .post(`/api/products`, {}, config)
       .then((res) => {
         dispatch({
@@ -163,7 +164,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
       },
     };
 
-    await axios
+    await request
       .put(`/api/products/${product._id}`, product, config)
       .then((res) => {
         dispatch({
@@ -210,7 +211,7 @@ export const createReviewProduct = (productId, review) => async (
       },
     };
 
-    await axios
+    await request
       .post(`/api/products/${productId}/reviews`, review, config)
       .then((res) => {
         dispatch({
@@ -240,7 +241,7 @@ export const createReviewProduct = (productId, review) => async (
 export const listTopProducts = () => async (dispatch) => {
   dispatch({ type: PRODUCT_TOP_REQUEST });
   try {
-    const { data } = await axios.get(`/api/products/top`);
+    const { data } = await request.get(`/api/products/top`);
 
     dispatch({ type: PRODUCT_TOP_SUCCESS, payload: data });
   } catch (error) {

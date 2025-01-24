@@ -1,4 +1,4 @@
-import axios from "axios";
+import request from "../../api.js";
 import {
   USER_LOGIN_SUCCESS,
   USER_LOGIN_REQUEST,
@@ -46,7 +46,7 @@ export const login = (email, password) => async (dispatch) => {
       password,
     };
 
-    axios
+    request
       .post("/api/users/login", body, config)
       .then((res) => {
         dispatch({
@@ -111,7 +111,7 @@ export const register = (name, email, password) => async (dispatch) => {
       password,
     };
 
-    axios
+    request
       .post("/api/users", body, config)
       .then((res) => {
         dispatch({
@@ -161,7 +161,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       },
     };
 
-    axios
+    request
       .get(`/api/users/${id}`, config)
       .then((res) => {
         dispatch({
@@ -205,7 +205,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       },
     };
 
-    axios
+    request
       .put(`/api/users/profile`, user, config)
       .then((res) => {
         dispatch({
@@ -248,7 +248,7 @@ export const listUser = () => async (dispatch, getState) => {
       },
     };
 
-    axios
+    request
       .get(`/api/users`, config)
       .then((res) => {
         dispatch({
@@ -291,7 +291,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
       },
     };
 
-    axios
+    request
       .delete(`/api/users/${id}`, config)
       .then((res) => {
         dispatch({
@@ -334,7 +334,7 @@ export const UpdateUser = (user) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios
+    const { data } = await request
       .put(`/api/users/${user._id}`, user, config)
       .then((res) => {
         dispatch({
